@@ -9,3 +9,18 @@
     border-top-right-radius: 0 !important;
     z-index: 10 !important;
 }
+
+@media only screen and (max-width: 768px) {
+    .searchBar {
+        width: 5%;
+    }
+
+    .searchBtn {
+        border-radius: 100px !important;
+        padding: 20px !important;
+    }
+    
+    .searchInput {
+        display: none !important;
+    }
+}
