@@ -1,5 +1,3 @@
-/* Import CSS Reset */
-@import url("../public/css/reset.css");
 /* Import Persian Fonts */
 @import url("assets/fonts/font-face.css");
 
@@ -11,5 +9,5 @@
 };
 
 body {
-	font-family: iranyekan, KalamehWeb, sans-serif;
+	font-family: IranYekan, KalamehWeb, sans-serif;
 }
