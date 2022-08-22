@@ -1,8 +1,4 @@
-import { CssVarsProvider } from "@mui/joy";
-import { TextField, Button } from "@mui/joy";
-
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import SearchContact from "../SearchContact/SearchContact";
 
 import styles from "./Navbar.module.css";
 
@@ -17,15 +13,7 @@ const Navbar = () => {
 						</a>
 					</h1>
 
-					<CssVarsProvider>
-						<div className={styles.searchBar}>
-							<TextField className={styles.searchInput} variant="solid" size="sm" placeholder="جستجوی مخاطب..." fullWidth />
-
-							<Button className={styles.searchBtn} size="sm">
-								<FontAwesomeIcon icon={faSearch} />
-							</Button>
-						</div>
-					</CssVarsProvider>
+					<SearchContact />
 				</div>
 			</div>
 		</nav>

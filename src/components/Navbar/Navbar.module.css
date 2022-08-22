@@ -19,15 +19,3 @@
     font-size: 1.2em;
     color: var(--primary-color);
 }
-
-.searchBar {
-    width: 30%;
-    display: flex;
-    align-items: center;
-}
-
-.searchBtn {
-    margin-right: -30px !important;
-    border-top-right-radius: 0 !important;
-    z-index: 10 !important;
-}
