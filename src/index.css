@@ -1,6 +1,16 @@
 /* Import Persian Fonts */
 @import url("assets/fonts/font-face.css");
 
+
+:root {
+	/* Colors */
+	--primary-color: #0066FF;
+
+	/* Fonts */
+	--kalameh-font:  KalamehWeb, IRANYekan, sans-serif;
+	--iranyekan-font: IRANYekan, KalamehWeb sans-serif;
+}
+
 * {
 	padding: 0;
 	margin: 0;
@@ -9,5 +19,30 @@
 };
 
 body {
-	font-family: IranYekan, KalamehWeb, Raleway, sans-serif;
+	font-family: IRANYekan, KalamehWeb, Raleway, sans-serif !important;
+	background-color: #282C34;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+.container {
+	max-width: 1400px;
+	margin: 0 auto;
+	padding: 0.2em;
+}
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+
+/* Default Joy UI styles */
+.JoyInput-input {
+	font-family: var(--iranyekan-font) !important;
 }
