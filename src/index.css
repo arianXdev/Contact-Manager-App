@@ -5,6 +5,13 @@
 :root {
 	/* Color Palette */
 	--primary-color: #0066FF;
+	--background-color: #282C34;
+	--foreground-color: #707175;
+	--green-color: #00CEA3;
+	--red-color: #FF0D3E;
+	--cyan-color: #DFF1FF;
+	--yellow-color: #f1fa8c;
+	--gray-color: #A5A5A5;
 
 	/* Fonts */
 	--kalameh-font:  KalamehWeb, IRANYekan, sans-serif;
@@ -22,7 +29,7 @@
 
 body {
 	font-family: IRANYekan, KalamehWeb, Raleway, sans-serif !important;
-	background-color: #282C34;
+	background-color: var(--background-color);
 }
 
 a {
