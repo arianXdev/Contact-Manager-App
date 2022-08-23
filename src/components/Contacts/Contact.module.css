@@ -1,0 +1,199 @@
+.Contact {
+	position: relative;
+	width: 39%;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	border-radius: 60px;
+	padding: 0 20px;
+	margin-bottom: 40px;
+	border: 2px solid var(--contact-border-color);
+	background-color: var(--contact-bg-color);
+	box-shadow: 0 0 20px rgba(37, 37, 37, 0.78);
+}
+
+.ContactRight {
+	width: 178px;
+}
+
+.ContactImage {
+	width: 100%;
+	border-radius: 50px;
+	box-shadow: 0 0 20px rgba(37, 37, 37, 0.8);
+}
+
+.ContactLeft {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-right: 20px;
+}
+
+.contactButtons {
+	position: absolute;
+	left: -17px;
+	display: inherit;
+	flex-direction: column;
+	opacity: 0;
+	pointer-events: none;
+	transition: all 0.2s ease-in;
+}
+
+.Contact:hover .contactButtons {
+	opacity: 100;
+	pointer-events: visible;
+}
+
+.contactButton {
+	margin: 5px 0;
+	padding: 8px;
+	font-size: 15px;
+	color: #fff;
+	border-radius: 12px;
+	border: none;
+	cursor: pointer;
+	box-shadow: 0 0 20px rgb(39, 39, 39);
+	transition: all 0.2s ease-out;
+}
+
+.contactButtonBlue {
+	background-color: var(--primary-color);
+}
+
+.contactButtonGreen {
+	background-color: var(--green-color);
+}
+
+.contactButtonRed {
+	background-color: var(--red-color);
+}
+
+.contactButtonBlue:hover {
+	background-color: #053b8d;
+}
+
+.contactButtonGreen:hover {
+	background-color: #008d6e;
+}
+
+.contactButtonRed:hover {
+	background-color: #9e0423;
+}
+
+.ContactItem {
+	margin: 25px 0;
+	font-size: 15.5px;
+}
+
+.ContactNameLabel {
+	font-size: 14.2px;
+	color: #c2c2c2;
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+}
+
+.ContactName {
+	color: #fff;
+	font-family: var(--iranyekan-font);
+	font-weight: 850;
+	font-size: 18px;
+	margin-top: 7px;
+}
+
+.ContactMobileLabel {
+	font-size: 14.2px;
+	color: #c2c2c2;
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+}
+
+.ContactMobile {
+	color: #fff;
+	font-family: var(--iranyekan-font);
+	font-weight: 850;
+	margin-top: 10px;
+	letter-spacing: 2px;
+}
+
+.ContactEmailLabel {
+	font-size: 14.2px;
+	color: #c2c2c2;
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+}
+
+.ContactEmail {
+	color: #fff;
+	font-family: var(--iranyekan-font);
+	font-weight: 850;
+	margin-top: 10px;
+}
+
+@media only screen and (max-width: 1200px) {
+	.Contact {
+		width: 87%;
+		box-shadow: 0 0 30px rgba(0, 0, 0, 0.25);
+	}
+
+	.contactButton {
+		font-size: 25px;
+		border-radius: 25px;
+		margin: 10px 0;
+		padding: 14px;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.Contact {
+		width: 90%;
+	}
+}
+
+@media only screen and (max-width: 442px) {
+	.Contact {
+		width: 90%;
+		flex-direction: column;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		margin-bottom: 60px;
+		border-radius: 0;
+	}
+
+	.ContactItem {
+		font-size: 17px;
+	}
+
+	.contactButtons {
+		bottom: -25px;
+		left: 14.5%;
+		flex-direction: row;
+		justify-content: space-between;
+	}
+
+	.contactButton {
+		font-size: 22px;
+		padding: 17px;
+		margin: 0 14px;
+		border-radius: 50px;
+	}
+}
+
+@media only screen and (max-width: 400px) {
+	.contactButtons {
+		left: 12.5%;
+	}
+
+	.contactButton {
+		font-size: 20px;
+		padding: 17px;
+	}
+}
+
+@media only screen and (max-width: 365px) {
+	.contactButtons {
+		left: 10%;
+	}
+}

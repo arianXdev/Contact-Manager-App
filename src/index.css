@@ -12,6 +12,8 @@
 	--cyan-color: #DFF1FF;
 	--yellow-color: #f1fa8c;
 	--gray-color: #A5A5A5;
+	--contact-border-color: #707070;
+	--contact-bg-color: #31353E;
 
 	/* Fonts */
 	--kalameh-font:  KalamehWeb, IRANYekan, sans-serif;
@@ -54,4 +56,7 @@ a {
 /* Default Joy UI styles */
 .JoyInput-input {
 	font-family: var(--iranyekan-font) !important;
+}
+
+.MuiButtonBase-root {
 }

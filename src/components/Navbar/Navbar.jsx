@@ -1,3 +1,5 @@
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faContactBook } from "@fortawesome/free-solid-svg-icons";
 import SearchContact from "../SearchContact/SearchContact";
 
 import styles from "./Navbar.module.css";
@@ -9,7 +11,11 @@ const Navbar = () => {
 				<div className="row">
 					<h1 className={styles.title}>
 						<a href=".">
-							<span className={styles.titleLight}>وب اپلیکیشن مدیریت</span> <span className={styles.titleBold}>مخاطبین</span>
+							<span className={styles.titleLight}>
+								<FontAwesomeIcon style={{ marginLeft: 5 }} icon={faContactBook} />
+								وب اپلیکیشن مدیریت
+							</span>{" "}
+							<span className={styles.titleBold}>مخاطبین</span>
 						</a>
 					</h1>
 
