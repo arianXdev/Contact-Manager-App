@@ -20,6 +20,8 @@
 	width: 100%;
 	border-radius: 50px;
 	box-shadow: 0 0 20px rgba(37, 37, 37, 0.8);
+	user-select: none !important;
+	pointer-events: none !important;
 }
 
 .ContactLeft {
