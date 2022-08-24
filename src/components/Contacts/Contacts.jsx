@@ -3,9 +3,7 @@ import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 
 import { Fab } from "@mui/material";
 
-import Contact from "./Contact";
-import Spinner from "../Spinner/Spinner";
-import EmptyWarning from "../EmptyWarning/EmptyWarning";
+import { Contact, Spinner, EmptyWarning } from "..";
 
 import styles from "./Contacts.module.css";
 

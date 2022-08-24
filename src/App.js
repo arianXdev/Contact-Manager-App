@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import Navbar from "./components/Navbar/Navbar";
-import Contacts from "./components/Contacts/Contacts";
+// Import from components/index.jsx
+import { Contacts, AddContact, EditContact, ViewContact, Navbar } from "./components";
 
 import styles from "./App.module.css";
 

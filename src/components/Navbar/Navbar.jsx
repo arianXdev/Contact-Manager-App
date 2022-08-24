@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faContactBook } from "@fortawesome/free-solid-svg-icons";
-import SearchContact from "../SearchContact/SearchContact";
+
+import { SearchContact } from "..";
 
 import styles from "./Navbar.module.css";
 
