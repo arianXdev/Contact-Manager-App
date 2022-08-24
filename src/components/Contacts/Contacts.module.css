@@ -18,9 +18,34 @@
 	font-size: 18px;
 }
 
+.emptyWarning {
+	text-align: center;
+	margin-top: 5%;
+	opacity: 0.8;
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	pointer-events: none;
+}
+
+.emptyWarning p {
+	font-family: var(--kalameh-font);
+	font-size: 2rem;
+	font-weight: 900;
+	color: var(--foreground-color);
+}
+
 @media only screen and (max-width: 992px) {
 	.Fab {
 		font-size: 20px !important;
 		bottom: 3%;
+	}
+
+	.emptyWarning img {
+		width: 50vw;
+	}
+
+	.emptyWarning p {
+		font-size: 5vw;
 	}
 }
