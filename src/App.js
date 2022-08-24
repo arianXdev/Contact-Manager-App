@@ -8,7 +8,7 @@ import styles from "./App.module.css";
 const App = () => {
 	// eslint-disable-next-line
 	const [getContacts, setContacts] = useState([]);
-	const [loading, setLoading] = useState(true);
+	const [loading, setLoading] = useState(false);
 
 	return (
 		<div className={styles.App}>

@@ -5,6 +5,7 @@ import { Fab } from "@mui/material";
 
 import Contact from "./Contact";
 import Spinner from "../Spinner/Spinner";
+import EmptyWarning from "../EmptyWarning/EmptyWarning";
 
 import styles from "./Contacts.module.css";
 
@@ -26,10 +27,7 @@ const Contacts = ({ contacts, loading }) => {
 							))}
 						</section>
 					) : (
-						<div className={styles.emptyWarning}>
-							<img src={require("../../assets/images/No-Data.gif")} alt="No Data" />
-							<p>هیچ مخاطبی وجود ندارد...</p>
-						</div>
+						<EmptyWarning />
 					)}
 				</div>
 			)}
