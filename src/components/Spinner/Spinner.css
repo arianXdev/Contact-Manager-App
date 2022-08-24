@@ -1,0 +1,11 @@
+.Spinner {
+	display: block;
+	margin: 12vw auto;
+}
+
+@media only screen and (max-width: 992px) {
+	.Spinner {
+		width: 20vw;
+		margin-top: 30vw;
+	}
+}

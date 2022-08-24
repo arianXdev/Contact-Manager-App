@@ -8,12 +8,13 @@ import styles from "./App.module.css";
 const App = () => {
 	// eslint-disable-next-line
 	const [getContacts, setContacts] = useState([]);
+	const [loading, setLoading] = useState(true);
 
 	return (
 		<div className={styles.App}>
 			<Navbar />
 
-			<Contacts contacts={getContacts} />
+			<Contacts contacts={getContacts} loading={loading} />
 		</div>
 	);
 };
