@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 
 // Import from components/index.jsx
 import { Contacts, AddContact, EditContact, ViewContact, Navbar } from "./components";
@@ -14,7 +15,9 @@ const App = () => {
 		<div className={styles.App}>
 			<Navbar />
 
-			<Contacts contacts={getContacts} loading={loading} />
+			<Routes>
+				<Route path="/" element={<Navigate to="/contacts" />} />
+			</Routes>
 		</div>
 	);
 };
