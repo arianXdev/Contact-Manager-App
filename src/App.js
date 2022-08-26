@@ -1,4 +1,5 @@
 import { useState } from "react";
+// eslint-disable-next-line
 import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 
 // Import from components/index.jsx
@@ -9,6 +10,7 @@ import styles from "./App.module.css";
 const App = () => {
 	// eslint-disable-next-line
 	const [getContacts, setContacts] = useState([]);
+	// eslint-disable-next-line
 	const [loading, setLoading] = useState(false);
 
 	return (
