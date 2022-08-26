@@ -17,6 +17,7 @@ const App = () => {
 
 			<Routes>
 				<Route path="/" element={<Navigate to="/contacts" />} />
+				<Route path="/contacts" element={<Contacts contacts={getContacts} loading={loading} />} />
 			</Routes>
 		</div>
 	);
