@@ -1,5 +1,25 @@
 {
-	"contacts": [],
+	"contacts": [
+		{
+			"fullName": "Clarian North",
+			"photo": "https://static.ra.co/images/profiles/square/clarian.jpg?dateUpdated=1496098137333",
+			"mobileNumber": "603-793-4446",
+			"email": "clarian@north.com",
+			"job": "Senior Blockchain Developer",
+			"group": "1",
+			"id": 1
+		},
+		{
+			"fullName": "Gary B Bennett",
+			"photo": "https://www.fakepersongenerator.com/Face/male/male1084806240662.jpg",
+			"mobileNumber": "530-209-7490",
+			"email": "samanta.dou@gmail.com",
+			"job": "Python Developer",
+			"group": "1",
+			"id": 2
+		}
+	],
+
 	"groups": [
 		{
 			"id": "1",
