@@ -4,7 +4,7 @@
 			"fullName": "Clarian North",
 			"photo": "https://static.ra.co/images/profiles/square/clarian.jpg?dateUpdated=1496098137333",
 			"mobileNumber": "603-793-4446",
-			"email": "clarian@north.com",
+			"email": "clarian@north.org",
 			"job": "Senior Blockchain Developer",
 			"group": "1",
 			"id": 1
@@ -19,7 +19,6 @@
 			"id": 2
 		}
 	],
-
 	"groups": [
 		{
 			"id": "1",
