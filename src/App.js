@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
 // eslint-disable-next-line
-import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import axios from "axios";
 
 // Import from components/index.jsx
 import { Contacts, AddContact, EditContact, ViewContact, Navbar } from "./components";
+import { getAllContacts, getAllGroups } from "./services/contactService";
 
 import styles from "./App.module.css";
 
@@ -19,8 +20,8 @@ const App = () => {
 			try {
 				setLoading(true); // showing the user loading data from server
 
-				const { data: contactsData } = await axios.get("http://localhost:9000/contacts");
-				const { data: groupsData } = await axios.get("http://localhost:9000/groups");
+				const { data: contactsData } = await getAllContacts();
+				const { data: groupsData } = await getAllGroups();
 
 				setContacts(contactsData);
 				setGroups(groupsData);
