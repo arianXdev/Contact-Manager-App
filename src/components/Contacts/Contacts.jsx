@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
 
@@ -10,9 +11,11 @@ import styles from "./Contacts.module.css";
 const Contacts = ({ contacts, loading }) => {
 	return (
 		<>
-			<Fab className={styles.Fab}>
-				<FontAwesomeIcon icon={faUserPlus} />
-			</Fab>
+			<Link to="/contacts/add">
+				<Fab className={styles.Fab}>
+					<FontAwesomeIcon icon={faUserPlus} />
+				</Fab>
+			</Link>
 
 			{loading ? (
 				<Spinner />

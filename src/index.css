@@ -1,22 +1,21 @@
 /* Import Persian Fonts */
 @import url("assets/fonts/font-face.css");
 
-
 :root {
 	/* Color Palette */
-	--primary-color: #0066FF;
-	--background-color: #282C34;
+	--primary-color: #0066ff;
+	--background-color: #282c34;
 	--foreground-color: #707175;
-	--green-color: #00CEA3;
-	--red-color: #FF0D3E;
-	--cyan-color: #DFF1FF;
+	--green-color: #00cea3;
+	--red-color: #ff0d3e;
+	--cyan-color: #dff1ff;
 	--yellow-color: #f1fa8c;
-	--gray-color: #A5A5A5;
+	--gray-color: #a5a5a5;
 	--contact-border-color: #707070;
-	--contact-bg-color: #31353E;
+	--contact-bg-color: #31353e;
 
 	/* Fonts */
-	--kalameh-font:  KalamehWeb, IRANYekan, sans-serif;
+	--kalameh-font: KalamehWeb, IRANYekan, sans-serif;
 	--iranyekan-font: IRANYekan, KalamehWeb sans-serif;
 }
 
@@ -27,22 +26,22 @@
 	box-sizing: border-box;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 	-moz-tap-highlight-color: rgba(0, 0, 0, 0);
-};
+}
 
 body {
 	font-family: IRANYekan, KalamehWeb, Raleway, sans-serif !important;
-	background-color: var(--background-color);
+	background-color: var(--background-color) !important;
 }
 
 a {
-	text-decoration: none;
-	color: inherit;
+	text-decoration: none !important;
+	color: inherit !important;
 }
 
 .container {
-	max-width: 1400px;
-	margin: 0 auto;
-	padding: 0.2em;
+	max-width: 1400px !important;
+	margin: 0 auto !important;
+	padding: 0.2em !important;
 }
 
 .row {
@@ -51,7 +50,6 @@ a {
 	justify-content: space-between;
 	align-items: center;
 }
-
 
 /* Default Joy UI styles */
 .JoyInput-input {
