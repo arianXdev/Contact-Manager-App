@@ -1,10 +1,157 @@
+import { useState, useEffect } from "react";
+
+import { getContact, getAllGroups, updateContact } from "../../services/contactService";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { Spinner } from "..";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUpload, faUserEdit } from "@fortawesome/free-solid-svg-icons";
 import styles from "./EditContact.module.css";
+import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
 
 const EditContact = () => {
+	const { contactId } = useParams();
+	const navigate = useNavigate();
+
+	const [state, setState] = useState({
+		loading: false,
+		contact: {
+			fullName: "",
+			photo: "",
+			mobileNumber: "",
+			email: "",
+			job: "",
+			group: "",
+		},
+		groups: [],
+	});
+
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				setState({ ...state, loading: true });
+				const { data: contactData } = await getContact(contactId);
+				const { data: groupsData } = await getAllGroups();
+
+				setState({
+					...state,
+					loading: false,
+					contact: contactData,
+					groups: groupsData,
+				});
+			} catch (err) {
+				console.log(err.message);
+				setState({
+					...state,
+					loading: false,
+				});
+			}
+		};
+
+		fetchData();
+	}, []);
+
+	const handleSelectImage = () => {
+		const imageURL = prompt("What is the image URL?");
+		if (imageURL.startsWith("http")) {
+			setState({ ...state, contact: { ...state.contact, photo: imageURL } });
+		}
+	};
+
+	// Event Handler
+	const handleSubmitForm = async (event) => {
+		event.preventDefault(); // preventing to reload the page after clicking on the Submit button
+
+		try {
+			setState({ ...state, loading: true });
+
+			const { data } = await updateContact(state.contact, contactId);
+			setState({ ...state, loading: false });
+
+			if (data) {
+				navigate("/contacts");
+			}
+		} catch (err) {
+			console.log(err.message);
+			setState({ ...state, loading: false });
+		}
+	};
+
+	// Event Handler
+	const updateContactInfo = (event) => {
+		setState({ ...state, contact: { ...state.contact, [event.target.name]: event.target.value } });
+	};
+
+	const { groups, loading, contact } = state;
+
 	return (
-		<>
-			<h2>Edit Contact</h2>
-		</>
+		<main>
+			{loading ? (
+				<Spinner />
+			) : (
+				<div className="container">
+					<section className={styles.EditContact}>
+						<section className={styles.EditContactRight}>
+							<h1 className={styles.EditContactTitle}>
+								<FontAwesomeIcon icon={faUserEdit} size="sm" />
+								ویرایش مخاطب
+							</h1>
+
+							<form className={styles.EditContactForm} onSubmit={handleSubmitForm}>
+								<input type="text" className="input" name="fullName" placeholder="نام" required={true} value={contact.fullName} onChange={updateContactInfo} />
+								<input
+									type="text"
+									className="input"
+									name="mobileNumber"
+									placeholder="شماره موبایل"
+									required={true}
+									value={contact.mobileNumber}
+									onChange={updateContactInfo}
+								/>
+								<input type="text" className="input" name="email" placeholder="ایمیل" required={true} value={contact.email} onChange={updateContactInfo} />
+								<input type="text" className="input" name="job" placeholder="شغل" required={true} value={contact.job} onChange={updateContactInfo} />
+
+								<select className="select" name="group" value={contact.group} onChange={updateContactInfo}>
+									<option value="0">انتخاب گروه</option>
+									{groups.length > 0 &&
+										groups.map((group) => (
+											<option key={group.id} value={group.id}>
+												{group.name}
+											</option>
+										))}
+								</select>
+
+								<div className={styles.EditContactButtonGroup}>
+									<button type="submit" className="btn btn--red btn--edit">
+										<FontAwesomeIcon icon={faUserEdit} />
+										ویرایش مخاطب
+									</button>
+
+									<button type="button" className="btn btn--cancel" onClick={() => navigate("/contacts")}>
+										انصراف
+									</button>
+								</div>
+							</form>
+						</section>
+
+						<section className={styles.EditContactLeft}>
+							<div className={styles.profilePicture} style={{ padding: contact.photo ? false : 35 }}>
+								{contact.photo ? (
+									<img src={contact.photo} alt="profile-picture" className={styles.profilePictureImg} />
+								) : (
+									<FontAwesomeIcon icon={faUserCircle} className={styles.profilePictureIcon} />
+								)}
+							</div>
+
+							<button className="btn" onClick={handleSelectImage}>
+								<FontAwesomeIcon icon={faUpload} />
+								انتخاب تصویر
+							</button>
+						</section>
+					</section>
+				</div>
+			)}
+		</main>
 	);
 };
 

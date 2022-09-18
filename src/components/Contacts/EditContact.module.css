@@ -1,0 +1,84 @@
+.EditContact {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	padding: 20px 0;
+}
+
+.EditContactRight,
+.EditContactForm {
+	display: flex;
+	width: 60%;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.EditContactRight > * {
+	margin: 20px 0;
+}
+
+.EditContactForm > * {
+	margin: 10px 0;
+}
+
+.EditContactLeft {
+	width: 40%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.EditContactTitle {
+	font-family: var(--kalameh-font);
+	color: var(--cyan-color);
+	font-size: 30px;
+	font-weight: 850;
+	margin: 0;
+}
+
+.EditContactTitle > * {
+	margin-left: 7px;
+}
+
+.EditContactButtonGroup {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	margin-top: 30px;
+}
+
+.uploadPhotoLabel {
+	cursor: pointer;
+	/* Style as you please, it will become the visible UI component. */
+}
+
+.uploadPhotoInput {
+	opacity: 0;
+	position: absolute;
+	z-index: -1;
+}
+
+.profilePicture {
+	width: 300px;
+	height: 300px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 20px;
+	border-radius: 100%;
+	background-color: var(--foreground-color);
+	overflow: hidden;
+}
+
+.profilePictureImg {
+	width: 100%;
+	height: 100%;
+}
+
+.profilePictureIcon {
+	font-size: 200px;
+	color: #fff;
+}

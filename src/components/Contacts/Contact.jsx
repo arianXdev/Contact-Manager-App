@@ -36,9 +36,11 @@ const Contact = ({ contact: { fullName, email, photo, mobileNumber, job, group, 
 						</button>
 					</Link>
 
-					<button className={`${styles.contactButton} ${styles.contactButtonGreen}`}>
-						<FontAwesomeIcon icon={faUserEdit} />
-					</button>
+					<Link to={`/contacts/edit/${id}`}>
+						<button className={`${styles.contactButton} ${styles.contactButtonGreen}`}>
+							<FontAwesomeIcon icon={faUserEdit} />
+						</button>
+					</Link>
 
 					<button className={`${styles.contactButton} ${styles.contactButtonRed}`}>
 						<FontAwesomeIcon icon={faUserMinus} />
