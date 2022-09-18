@@ -9,8 +9,9 @@ import { createContact, getAllContacts, getAllGroups } from "./services/contactS
 import styles from "./App.module.css";
 
 const App = () => {
-	const [getContacts, setContacts] = useState([]);
 	const [loading, setLoading] = useState(false);
+	const [forceRender, setForceRender] = useState(false);
+	const [getContacts, setContacts] = useState([]);
 	const [getGroups, setGroups] = useState([]);
 	const [getContact, setContact] = useState({
 		fullName: "",
@@ -44,6 +45,26 @@ const App = () => {
 		fetchData();
 	}, []);
 
+	useEffect(() => {
+		// Get data from server using Axios
+		const fetchData = async () => {
+			try {
+				setLoading(true); // showing the user loading data from server
+
+				const { data: contactsData } = await getAllContacts();
+
+				setContacts(contactsData);
+
+				setLoading(false);
+			} catch (err) {
+				console.log(err.message);
+				setLoading(false);
+			}
+		};
+
+		fetchData();
+	}, [forceRender]); // when forceRender changed, run the code above
+
 	// Event Handler
 	const createContactForm = async (event) => {
 		event.preventDefault(); // preventing to reload the page after clicking on the Submit button
@@ -52,6 +73,7 @@ const App = () => {
 			const { status } = await createContact(getContact);
 			if (status === 201) {
 				setContact({});
+				setForceRender(!forceRender);
 				navigate("/contacts");
 			}
 		} catch (err) {

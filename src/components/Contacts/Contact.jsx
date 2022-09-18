@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { faUserEdit, faUserMinus } from "@fortawesome/free-solid-svg-icons";
 import { faEye } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -29,9 +30,11 @@ const Contact = ({ contact: { fullName, email, photo, mobileNumber, job, group, 
 				</ul>
 
 				<div className={styles.contactButtons}>
-					<button className={`${styles.contactButton} ${styles.contactButtonBlue}`}>
-						<FontAwesomeIcon icon={faEye} />
-					</button>
+					<Link to={`/contacts/${id}`}>
+						<button className={`${styles.contactButton} ${styles.contactButtonBlue}`}>
+							<FontAwesomeIcon icon={faEye} />
+						</button>
+					</Link>
 
 					<button className={`${styles.contactButton} ${styles.contactButtonGreen}`}>
 						<FontAwesomeIcon icon={faUserEdit} />

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faContactBook } from "@fortawesome/free-solid-svg-icons";
 
@@ -11,13 +12,13 @@ const Navbar = () => {
 			<div className="container">
 				<div className="row">
 					<h1 className={styles.title}>
-						<a href=".">
+						<Link to="/contacts">
 							<span className={styles.titleLight}>
 								<FontAwesomeIcon style={{ marginLeft: 5 }} icon={faContactBook} />
 								وب اپلیکیشن مدیریت
 							</span>{" "}
 							<span className={styles.titleBold}>مخاطبین</span>
-						</a>
+						</Link>
 					</h1>
 
 					<SearchContact />

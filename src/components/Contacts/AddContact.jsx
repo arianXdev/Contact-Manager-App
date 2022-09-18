@@ -13,8 +13,10 @@ const AddContact = ({ loading, contact, setContactInfo, groups, createContactFor
 
 	const handleSelectImage = () => {
 		const imageURL = prompt("What is the image URL?");
-		setProfileImage(imageURL);
-		contact.photo = `${imageURL}`;
+		if (imageURL.startsWith("http")) {
+			setProfileImage(imageURL);
+			contact.photo = `${imageURL}`;
+		}
 	};
 
 	return (
