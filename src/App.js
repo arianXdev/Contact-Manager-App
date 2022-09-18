@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 
 // Import from components/index.jsx
-import { Contacts, AddContact, EditContact, ViewContact, Navbar } from "./components";
+import { Contacts, AddContact, EditContact, ViewContact, Navbar, EmptyWarning } from "./components";
 import { createContact, getAllContacts, getAllGroups } from "./services/contactService";
 
 import styles from "./App.module.css";
@@ -98,6 +98,7 @@ const App = () => {
 				/>
 				<Route path="/contacts/:contactId" element={<ViewContact />} />
 				<Route path="/contacts/edit/:contactId" element={<EditContact />} />
+				<Route path="*" element={<EmptyWarning />} />
 			</Routes>
 		</div>
 	);

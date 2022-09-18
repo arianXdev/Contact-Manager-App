@@ -20,7 +20,7 @@ const AddContact = ({ loading, contact, setContactInfo, groups, createContactFor
 	};
 
 	return (
-		<>
+		<main>
 			{loading ? (
 				<Spinner />
 			) : (
@@ -86,7 +86,7 @@ const AddContact = ({ loading, contact, setContactInfo, groups, createContactFor
 					</section>
 				</div>
 			)}
-		</>
+		</main>
 	);
 };
 

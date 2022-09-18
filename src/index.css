@@ -102,7 +102,7 @@ button {
 	background: var(--foreground-color);
 	border-radius: 50px;
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-	color: rgb(238, 238, 238);
+	color: rgb(238, 238, 238) !important;
 	font-weight: 850;
 	transition: all 0.2s ease-in-out;
 }
