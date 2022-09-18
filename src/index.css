@@ -51,6 +51,86 @@ a {
 	align-items: center;
 }
 
+select,
+input,
+button {
+	font-family: var(--main-font) !important;
+	outline: none;
+	border: none;
+}
+
+button {
+	cursor: pointer;
+}
+
+.input {
+	padding: 17px 30px;
+	font-size: 17px;
+	color: rgb(238, 238, 238);
+	border-radius: 25px;
+	background-color: var(--foreground-color);
+	box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+}
+
+.input::placeholder {
+	color: var(--gray-color);
+}
+
+.select {
+	color: rgb(238, 238, 238);
+	font-size: 15px;
+	font-weight: 850;
+	padding: 15px 20px;
+	border-radius: 25px;
+	box-shadow: 0 0 7px rgba(0, 0, 0, 0.1);
+	background-color: var(--foreground-color);
+	-moz-appearance: none; /* Firefox */
+	-webkit-appearance: none; /* Safari and Chrome */
+	appearance: none;
+}
+
+.select option {
+	color: rgb(238, 238, 238);
+	font-size: 15px;
+	padding: 15px 20px;
+	border-radius: 25px;
+}
+
+.btn {
+	padding: 15px 40px;
+	font-size: 18px;
+	background: var(--foreground-color);
+	border-radius: 50px;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	color: rgb(238, 238, 238);
+	font-weight: 850;
+	transition: all 0.2s ease-in-out;
+}
+
+.btn > svg {
+	margin-left: 5px;
+}
+
+.btn:hover {
+	background-color: #7071759c;
+}
+
+.btn--blue {
+	background-color: var(--primary-color);
+}
+
+.btn--blue:hover {
+	background-color: #0066ffc0;
+}
+
+.btn--add {
+	width: 60%;
+}
+
+.btn--cancel {
+	width: 35%;
+}
+
 /* Default Joy UI styles */
 .JoyInput-input {
 	font-family: var(--iranyekan-font) !important;
