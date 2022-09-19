@@ -4,7 +4,7 @@ import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 
 // Import from components/index.jsx
 import { Contacts, AddContact, EditContact, ViewContact, Navbar, EmptyWarning } from "./components";
-import { createContact, getAllContacts, getAllGroups } from "./services/contactService";
+import { createContact, getAllContacts, getAllGroups, deleteContact } from "./services/contactService";
 
 import styles from "./App.module.css";
 
@@ -84,6 +84,21 @@ const App = () => {
 	// Event Handler
 	const setContactInfo = (event) => {
 		setContact({ ...getContact, [event.target.name]: event.target.value });
+	};
+
+	const handleDeleteContact = async (contactId) => {
+		try {
+			setLoading(true);
+			const response = await deleteContact(contactId);
+			if (response) {
+				const { data: contactsData } = await getAllContacts();
+				setContacts(contactsData);
+				setLoading(false);
+			}
+		} catch (err) {
+			console.log(err.message);
+			setLoading(false);
+		}
 	};
 
 	return (
