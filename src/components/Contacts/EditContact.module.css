@@ -82,3 +82,29 @@
 	font-size: 200px;
 	color: #fff;
 }
+
+@media screen and (max-width: 1200px) {
+	.EditContact {
+		flex-direction: column-reverse;
+	}
+
+	.EditContactRight {
+		width: 86%;
+		margin-top: 60px;
+	}
+
+	.EditContactForm {
+		width: 100%;
+	}
+
+	.EditContactLeft {
+		width: 80%;
+		margin-top: 25px;
+	}
+
+	.EditContactButtonGroup {
+		flex-direction: column;
+		justify-content: center;
+		width: 100%;
+	}
+}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 import { getContact, getAllGroups, updateContact } from "../../services/contactService";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Spinner } from "..";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -25,7 +25,7 @@ const EditContact = () => {
 		},
 		groups: [],
 	});
-
+	// eslint-disable-next-line
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
@@ -41,7 +41,9 @@ const EditContact = () => {
 				});
 			} catch (err) {
 				console.log(err.message);
+
 				setState({
+					// eslint-disable-next-line
 					...state,
 					loading: false,
 				});
@@ -49,6 +51,7 @@ const EditContact = () => {
 		};
 
 		fetchData();
+		// eslint-disable-next-line
 	}, []);
 
 	const handleSelectImage = () => {
@@ -122,12 +125,12 @@ const EditContact = () => {
 								</select>
 
 								<div className={styles.EditContactButtonGroup}>
-									<button type="submit" className="btn btn--red btn--edit">
+									<button type="submit" className="btn btn--green btn--edit btn--w-100">
 										<FontAwesomeIcon icon={faUserEdit} />
 										ویرایش مخاطب
 									</button>
 
-									<button type="button" className="btn btn--cancel" onClick={() => navigate("/contacts")}>
+									<button type="button" className="btn btn--cancel btn--w-100" onClick={() => navigate("/contacts")}>
 										انصراف
 									</button>
 								</div>
@@ -137,13 +140,13 @@ const EditContact = () => {
 						<section className={styles.EditContactLeft}>
 							<div className={styles.profilePicture} style={{ padding: contact.photo ? false : 35 }}>
 								{contact.photo ? (
-									<img src={contact.photo} alt="profile-picture" className={styles.profilePictureImg} />
+									<img src={contact.photo} alt="profile" className={styles.profilePictureImg} />
 								) : (
 									<FontAwesomeIcon icon={faUserCircle} className={styles.profilePictureIcon} />
 								)}
 							</div>
 
-							<button className="btn" onClick={handleSelectImage}>
+							<button className="btn btn--w-100" onClick={handleSelectImage}>
 								<FontAwesomeIcon icon={faUpload} />
 								انتخاب تصویر
 							</button>

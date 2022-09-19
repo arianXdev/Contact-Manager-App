@@ -43,6 +43,7 @@ const ViewContact = () => {
 		};
 
 		fetchData();
+		// eslint-disable-next-line
 	}, []);
 
 	const { loading, contact, group } = state;
@@ -56,13 +57,12 @@ const ViewContact = () => {
 							<section className={styles.ViewContact}>
 								<section className={styles.ViewContactRight}>
 									<div className={styles.profilePicture}>
-										<img src={contact.photo || "https://placehold.jp/178x178.png"} alt="profile-picture" className={styles.profilePictureImg} />
+										<img src={contact.photo || "https://placehold.jp/178x178.png"} alt="profile" className={styles.profilePictureImg} />
 									</div>
 								</section>
 
 								<section className={styles.ViewContactLeft}>
 									<ul className={styles.ContactInfoList}>
-										s{" "}
 										<li className={styles.ContactItem}>
 											<span className={styles.ContactNameLabel}>نام:</span>
 											<h3 className={styles.ContactName}>{contact.fullName}</h3>
@@ -85,8 +85,8 @@ const ViewContact = () => {
 										</li>
 									</ul>
 
-									<Link to="/contacts" style={{ marginRight: "auto", marginTop: 30 }}>
-										<button className="btn btn--cancel" style={{ width: "100%" }}>
+									<Link to="/contacts" style={{ marginTop: 30 }}>
+										<button className="btn btn--cancel btn--w-100">
 											برگشت به صفحه اصلی
 											<ion-icon name="arrow-redo-outline" style={{ marginRight: 5, fontSize: 20 }}></ion-icon>
 										</button>

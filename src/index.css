@@ -131,6 +131,14 @@ button {
 	background-color: #ff0d3dab;
 }
 
+.btn--green {
+	background-color: var(--green-color);
+}
+
+.btn--green:hover {
+	background-color: #00cea186;
+}
+
 .btn--add,
 .btn--edit {
 	width: 60%;
@@ -140,10 +148,14 @@ button {
 	width: 35%;
 }
 
+@media only screen and (max-width: 1200px) {
+	.btn--w-100 {
+		width: 100% !important;
+		margin-bottom: 15px;
+	}
+}
+
 /* Default Joy UI styles */
 .JoyInput-input {
 	font-family: var(--iranyekan-font) !important;
-}
-
-.MuiButtonBase-root {
 }

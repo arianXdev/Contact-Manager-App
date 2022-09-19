@@ -51,14 +51,18 @@
 }
 
 .contactButton {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
 	margin: 5px 0;
-	padding: 8px;
-	font-size: 15px;
+	padding: 14px 12px;
+	font-size: 16px;
 	color: #fff;
-	border-radius: 12px;
+	border-radius: 15px;
 	border: none;
 	cursor: pointer;
-	box-shadow: 0 0 20px rgb(39, 39, 39);
+	box-shadow: 0 0 20px rgb(39, 39, 39, 0.9);
 	transition: all 0.2s ease-out;
 }
 
@@ -145,10 +149,9 @@
 	}
 
 	.contactButton {
-		font-size: 25px;
-		border-radius: 25px;
+		font-size: 22px;
+		border-radius: 17px;
 		margin: 10px 0;
-		padding: 14px;
 	}
 }
 
@@ -180,10 +183,9 @@
 	}
 
 	.contactButton {
-		font-size: 22px;
-		padding: 17px;
+		font-size: 25px;
 		margin: 0 14px;
-		border-radius: 50px;
+		border-radius: 20px;
 	}
 }
 
@@ -193,7 +195,7 @@
 	}
 
 	.contactButton {
-		font-size: 20px;
+		font-size: 18px;
 		padding: 17px;
 	}
 }

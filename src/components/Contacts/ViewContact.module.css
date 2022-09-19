@@ -135,3 +135,67 @@
 	font-weight: 850;
 	margin-top: 10px;
 }
+
+@media only screen and (min-width: 1200px) {
+	.ViewContact a {
+		margin-right: auto;
+	}
+
+	.ViewContact a > button {
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 1200px) {
+	.ViewContact {
+		flex-direction: column;
+	}
+
+	.ViewContactRight {
+		width: 86%;
+		margin-top: 60px;
+		margin-bottom: 20px;
+	}
+
+	.ViewContactForm {
+		width: 100%;
+	}
+
+	.ViewContactLeft {
+		width: 80%;
+		margin-top: 0;
+	}
+
+	.ViewContactButtonGroup {
+		flex-direction: column;
+		justify-content: center;
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 425px) {
+	.ViewContactLeft {
+		width: 90%;
+	}
+
+	.ContactJob,
+	.ContactGroup,
+	.ContactEmail,
+	.ContactMobile,
+	.ContactName {
+		font-size: 19px;
+	}
+
+	.ContactGroupLabel,
+	.ContactJobLabel,
+	.ContactEmailLabel,
+	.ContactMobileLabel,
+	.ContactNameLabel {
+		font-size: 15px;
+	}
+
+	.profilePicture {
+		width: 250px;
+		height: 250px;
+	}
+}

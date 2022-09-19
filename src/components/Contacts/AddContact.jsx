@@ -72,7 +72,7 @@ const AddContact = ({ loading, contact, setContactInfo, groups, createContactFor
 						<section className={styles.AddContactLeft}>
 							<div className={styles.profilePicture} style={{ padding: profileImage ? false : 35 }}>
 								{profileImage ? (
-									<img src={profileImage} alt="profile-picture" className={styles.profilePictureImg} />
+									<img src={profileImage} alt="profile" className={styles.profilePictureImg} />
 								) : (
 									<FontAwesomeIcon icon={faUserCircle} className={styles.profilePictureIcon} />
 								)}
