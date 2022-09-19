@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import styles from "./Contact.module.css";
 
-const Contact = ({ contact: { fullName, email, photo, mobileNumber, job, group, id } }) => {
+const Contact = ({ contact: { fullName, email, photo, mobileNumber, group, id }, confirmDeleteContact }) => {
 	return (
 		<div className={styles.Contact} id={id} group={group}>
 			<div className={styles.ContactRight}>
@@ -42,7 +42,7 @@ const Contact = ({ contact: { fullName, email, photo, mobileNumber, job, group, 
 						</button>
 					</Link>
 
-					<button className={`${styles.contactButton} ${styles.contactButtonRed}`}>
+					<button className={`${styles.contactButton} ${styles.contactButtonRed}`} onClick={confirmDeleteContact}>
 						<FontAwesomeIcon icon={faUserMinus} />
 					</button>
 				</div>

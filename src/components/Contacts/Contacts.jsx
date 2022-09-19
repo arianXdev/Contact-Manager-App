@@ -8,7 +8,7 @@ import { Contact, Spinner, EmptyWarning } from "..";
 
 import styles from "./Contacts.module.css";
 
-const Contacts = ({ contacts, loading }) => {
+const Contacts = ({ contacts, loading, confirmDeleteContact }) => {
 	return (
 		<>
 			<Link to="/contacts/add">
@@ -24,7 +24,7 @@ const Contacts = ({ contacts, loading }) => {
 					{contacts.length > 0 ? (
 						<section className={styles.Contacts}>
 							{contacts.map((c) => (
-								<Contact key={c.id} contact={c} />
+								<Contact key={c.id} contact={c} confirmDeleteContact={() => confirmDeleteContact(c.id, c.fullName)} />
 							))}
 						</section>
 					) : (

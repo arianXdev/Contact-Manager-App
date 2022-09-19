@@ -6,9 +6,16 @@ import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import { Contacts, AddContact, EditContact, ViewContact, Navbar, EmptyWarning } from "./components";
 import { createContact, getAllContacts, getAllGroups, deleteContact } from "./services/contactService";
 
+// SweetAlert2
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
 import styles from "./App.module.css";
 
 const App = () => {
+	// Initilizing SweetAlert2 For React
+	const MySwal = withReactContent(Swal);
+
 	const [loading, setLoading] = useState(false);
 	const [forceRender, setForceRender] = useState(false);
 	const [getContacts, setContacts] = useState([]);
@@ -86,6 +93,31 @@ const App = () => {
 		setContact({ ...getContact, [event.target.name]: event.target.value });
 	};
 
+	const confirmDeleteContact = (contactId, contactFullName) => {
+		MySwal.fire({
+			title: "حذف مخاطب",
+			text: `آيا از حذف مخاطب ${contactFullName} مطمئن هستید؟`,
+			icon: "warning",
+			showCancelButton: true,
+			confirmButtonColor: "#ff0d3e",
+			cancelButtonColor: "#a5a5a5",
+			confirmButtonText: "بله! حذف كن",
+			cancelButtonText: "انصراف",
+		}).then((result) => {
+			if (result.isConfirmed) {
+				Swal.fire({
+					title: "حذف مخاطب انجام شد!",
+					text: `مخاطب ${contactFullName} با موفقیت حذف شد.`,
+					icon: "success",
+					confirmButtonColor: "#0066ff",
+					confirmButtonText: "اوکی",
+				});
+
+				handleDeleteContact(contactId);
+			}
+		});
+	};
+
 	const handleDeleteContact = async (contactId) => {
 		try {
 			setLoading(true);
@@ -106,13 +138,13 @@ const App = () => {
 			<Navbar />
 			<Routes>
 				<Route path="/" element={<Navigate to="/contacts" />} />
-				<Route path="/contacts" element={<Contacts contacts={getContacts} loading={loading} />} />
+				<Route path="/contacts" element={<Contacts contacts={getContacts} loading={loading} confirmDeleteContact={confirmDeleteContact} />} />
 				<Route
 					path="/contacts/add"
 					element={<AddContact loading={loading} setContactInfo={setContactInfo} createContactForm={createContactForm} contact={getContact} groups={getGroups} />}
 				/>
 				<Route path="/contacts/:contactId" element={<ViewContact />} />
-				<Route path="/contacts/edit/:contactId" element={<EditContact />} />
+				<Route path="/contacts/edit/:contactId" element={<EditContact forceRender={forceRender} setForceRender={setForceRender} />} />
 				<Route path="*" element={<EmptyWarning />} />
 			</Routes>
 		</div>
