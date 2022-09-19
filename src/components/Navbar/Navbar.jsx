@@ -6,7 +6,7 @@ import { SearchContact } from "..";
 
 import styles from "./Navbar.module.css";
 
-const Navbar = () => {
+const Navbar = ({ query, search }) => {
 	return (
 		<nav className={styles.nav}>
 			<div className="container">
@@ -21,7 +21,7 @@ const Navbar = () => {
 						</Link>
 					</h1>
 
-					<SearchContact />
+					<SearchContact query={query} search={search} />
 				</div>
 			</div>
 		</nav>

@@ -19,6 +19,7 @@ const App = () => {
 	const [loading, setLoading] = useState(false);
 	const [forceRender, setForceRender] = useState(false);
 	const [getContacts, setContacts] = useState([]);
+	const [getFilteredContacts, setFilteredContacts] = useState([]);
 	const [getGroups, setGroups] = useState([]);
 	const [getContact, setContact] = useState({
 		fullName: "",
@@ -28,6 +29,7 @@ const App = () => {
 		job: "",
 		group: "",
 	});
+	const [query, setQuery] = useState({ text: "" });
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -40,6 +42,7 @@ const App = () => {
 				const { data: groupsData } = await getAllGroups();
 
 				setContacts(contactsData);
+				setFilteredContacts(contactsData);
 				setGroups(groupsData);
 
 				setLoading(false);
@@ -72,7 +75,6 @@ const App = () => {
 		fetchData();
 	}, [forceRender]); // when forceRender changed, run the code above
 
-	// Event Handler
 	const createContactForm = async (event) => {
 		event.preventDefault(); // preventing to reload the page after clicking on the Submit button
 
@@ -88,7 +90,6 @@ const App = () => {
 		}
 	};
 
-	// Event Handler
 	const setContactInfo = (event) => {
 		setContact({ ...getContact, [event.target.name]: event.target.value });
 	};
@@ -143,12 +144,20 @@ const App = () => {
 		}
 	};
 
+	const contactSearch = (event) => {
+		setQuery({ ...query, text: event.target.value });
+		const allContacts = getContacts.filter((contact) => contact.fullName.toLowerCase().includes(event.target.value.toLowerCase()));
+
+		setFilteredContacts(allContacts);
+	};
+
 	return (
 		<div className={styles.App}>
-			<Navbar />
+			<Navbar query={query} search={contactSearch} />
+
 			<Routes>
 				<Route path="/" element={<Navigate to="/contacts" />} />
-				<Route path="/contacts" element={<Contacts contacts={getContacts} loading={loading} confirmDeleteContact={confirmDeleteContact} />} />
+				<Route path="/contacts" element={<Contacts contacts={getFilteredContacts} loading={loading} confirmDeleteContact={confirmDeleteContact} />} />
 				<Route
 					path="/contacts/add"
 					element={<AddContact loading={loading} setContactInfo={setContactInfo} createContactForm={createContactForm} contact={getContact} groups={getGroups} />}

@@ -6,11 +6,11 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./SearchContact.module.css";
 
-const SearchContact = () => {
+const SearchContact = ({ query, search }) => {
 	return (
 		<CssVarsProvider>
 			<div className={styles.searchBar}>
-				<TextField className={styles.searchInput} variant="solid" size="sm" placeholder="جستجوی مخاطب..." fullWidth />
+				<TextField className={styles.searchInput} variant="solid" size="sm" placeholder="جستجوی مخاطب..." fullWidth value={query.text} onChange={search} />
 
 				<Button className={styles.searchBtn} size="sm">
 					<FontAwesomeIcon icon={faSearch} />
