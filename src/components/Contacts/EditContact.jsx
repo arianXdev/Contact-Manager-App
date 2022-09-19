@@ -9,7 +9,7 @@ import { faUpload, faUserEdit } from "@fortawesome/free-solid-svg-icons";
 import styles from "./EditContact.module.css";
 import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
 
-const EditContact = () => {
+const EditContact = ({ forceRender, setForceRender }) => {
 	const { contactId } = useParams();
 	const navigate = useNavigate();
 
@@ -72,6 +72,7 @@ const EditContact = () => {
 			setState({ ...state, loading: false });
 
 			if (data) {
+				setForceRender(!forceRender);
 				navigate("/contacts");
 			}
 		} catch (err) {
