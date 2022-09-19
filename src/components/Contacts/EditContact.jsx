@@ -32,7 +32,7 @@ const EditContact = ({ forceRender, setForceRender }) => {
 		},
 		groups: [],
 	});
-	// eslint-disable-next-line
+
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
@@ -50,7 +50,6 @@ const EditContact = ({ forceRender, setForceRender }) => {
 				console.log(err.message);
 
 				setState({
-					// eslint-disable-next-line
 					...state,
 					loading: false,
 				});

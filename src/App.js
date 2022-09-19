@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-// eslint-disable-next-line
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 
 // Import from components/index.jsx
