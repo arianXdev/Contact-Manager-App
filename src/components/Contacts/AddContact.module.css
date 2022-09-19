@@ -4,6 +4,7 @@
 	justify-content: space-between;
 	align-items: center;
 	padding: 20px 0;
+	padding-top: 50px;
 }
 
 .AddContactRight,
@@ -81,4 +82,31 @@
 .profilePictureIcon {
 	font-size: 200px;
 	color: #fff;
+}
+
+@media screen and (max-width: 1200px) {
+	.AddContact {
+		padding-top: 25px;
+		flex-direction: column-reverse;
+	}
+
+	.AddContactRight {
+		width: 86%;
+		margin-top: 60px;
+	}
+
+	.AddContactForm {
+		width: 100%;
+	}
+
+	.AddContactLeft {
+		width: 80%;
+		margin-top: 25px;
+	}
+
+	.AddContactButtonGroup {
+		flex-direction: column;
+		justify-content: center;
+		width: 100%;
+	}
 }

@@ -57,12 +57,12 @@ const AddContact = ({ loading, contact, setContactInfo, groups, createContactFor
 								</select>
 
 								<div className={styles.AddContactButtonGroup}>
-									<button type="submit" className="btn btn--blue btn--add">
+									<button type="submit" className="btn btn--blue btn--add btn--w-100">
 										<FontAwesomeIcon icon={faUserPlus} />
 										ساخت مخاطب
 									</button>
 
-									<button type="button" className="btn btn--cancel" onClick={() => navigate("/")}>
+									<button type="button" className="btn btn--cancel btn--w-100" onClick={() => navigate("/")}>
 										انصراف
 									</button>
 								</div>
