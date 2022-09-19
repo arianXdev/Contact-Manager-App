@@ -103,14 +103,24 @@ const App = () => {
 			cancelButtonColor: "#a5a5a5",
 			confirmButtonText: "بله! حذف كن",
 			cancelButtonText: "انصراف",
+			customClass: {
+				input: "input-custom",
+				popup: "popup-custom",
+				confirmButton: "confirmButton-custom confirmButton-custom--red",
+				cancelButton: "confirmButton-custom confirmButton-custom--gray",
+			},
 		}).then((result) => {
 			if (result.isConfirmed) {
-				Swal.fire({
+				MySwal.fire({
 					title: "حذف مخاطب انجام شد!",
 					text: `مخاطب ${contactFullName} با موفقیت حذف شد.`,
 					icon: "success",
 					confirmButtonColor: "#0066ff",
 					confirmButtonText: "اوکی",
+					customClass: {
+						popup: "popup-custom",
+						confirmButton: "confirmButton-custom confirmButton-custom--blue",
+					},
 				});
 
 				handleDeleteContact(contactId);

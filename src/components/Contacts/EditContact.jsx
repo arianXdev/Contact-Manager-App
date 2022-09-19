@@ -9,7 +9,14 @@ import { faUpload, faUserEdit } from "@fortawesome/free-solid-svg-icons";
 import styles from "./EditContact.module.css";
 import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
 
+// SweetAlert2
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
 const EditContact = ({ forceRender, setForceRender }) => {
+	// Initilizing SweetAlert2 For React
+	const MySwal = withReactContent(Swal);
+
 	const { contactId } = useParams();
 	const navigate = useNavigate();
 
@@ -54,11 +61,22 @@ const EditContact = ({ forceRender, setForceRender }) => {
 		// eslint-disable-next-line
 	}, []);
 
-	const handleSelectImage = () => {
-		const imageURL = prompt("What is the image URL?");
-		if (imageURL.startsWith("http")) {
-			setState({ ...state, contact: { ...state.contact, photo: imageURL } });
-		}
+	const handleSelectImage = async () => {
+		const { value: imageURL = state.contact.photo } = await MySwal.fire({
+			input: "url",
+			title: "آدرس تصوير",
+			inputPlaceholder: "لطفا آدرس تصوير مورد نظر را وارد کنید...",
+			confirmButtonText: "انتخاب / آپلود",
+			confirmButtonColor: "#0066ff",
+			validationMessage: "URL نامعتبر - لطفا آدرس را به درستی وارد کنید...",
+			customClass: {
+				input: "input-custom",
+				popup: "popup-custom",
+				confirmButton: "confirmButton-custom confirmButton-custom--blue",
+			},
+		});
+
+		setState({ ...state, contact: { ...state.contact, photo: imageURL } });
 	};
 
 	// Event Handler
