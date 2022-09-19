@@ -5,18 +5,36 @@ import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Spinner } from "..";
 
+// SweetAlert2
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
 import styles from "./AddContact.module.css";
 
 const AddContact = ({ loading, contact, setContactInfo, groups, createContactForm }) => {
+	// Initilizing SweetAlert2 For React
+	const MySwal = withReactContent(Swal);
+
 	const [profileImage, setProfileImage] = useState("");
 	const navigate = useNavigate();
 
-	const handleSelectImage = () => {
-		const imageURL = prompt("What is the image URL?");
-		if (imageURL.startsWith("http")) {
-			setProfileImage(imageURL);
-			contact.photo = `${imageURL}`;
-		}
+	const handleSelectImage = async () => {
+		const { value: imageURL } = await MySwal.fire({
+			input: "url",
+			title: "آدرس تصوير",
+			inputPlaceholder: "لطفا آدرس تصوير مورد نظر را وارد کنید...",
+			confirmButtonText: "انتخاب / آپلود",
+			confirmButtonColor: "#0066ff",
+			validationMessage: "URL نامعتبر - لطفا آدرس را به درستی وارد کنید...",
+			customClass: {
+				input: "input-custom",
+				popup: "popup-custom",
+				confirmButton: "confirmButton-custom confirmButton-custom--blue",
+			},
+		});
+
+		setProfileImage(imageURL);
+		contact.photo = `${imageURL}`;
 	};
 
 	return (
