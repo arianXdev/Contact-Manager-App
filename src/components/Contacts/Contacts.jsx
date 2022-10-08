@@ -1,3 +1,8 @@
+import { useContext } from "react";
+
+// Import Context
+import { ContactContext } from "../../context/contactContext";
+
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
@@ -8,7 +13,10 @@ import { Contact, Spinner, EmptyWarning } from "..";
 
 import styles from "./Contacts.module.css";
 
-const Contacts = ({ contacts, loading, confirmDeleteContact }) => {
+const Contacts = () => {
+	// Using Context
+	const { loading, contacts, deleteContact } = useContext(ContactContext);
+
 	return (
 		<>
 			<Link to="/contacts/add">
@@ -24,7 +32,7 @@ const Contacts = ({ contacts, loading, confirmDeleteContact }) => {
 					{contacts.length > 0 ? (
 						<section className={styles.Contacts}>
 							{contacts.map((c) => (
-								<Contact key={c.id} contact={c} confirmDeleteContact={() => confirmDeleteContact(c.id, c.fullName)} />
+								<Contact key={c.id} contact={c} confirmDeleteContact={() => deleteContact(c.id, c.fullName)} />
 							))}
 						</section>
 					) : (
