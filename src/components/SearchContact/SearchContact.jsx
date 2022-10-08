@@ -1,3 +1,8 @@
+import { useContext } from "react";
+
+// Import Context
+import { ContactContext } from "../../context/contactContext";
+
 import { CssVarsProvider } from "@mui/joy";
 import { TextField, Button } from "@mui/joy";
 
@@ -6,7 +11,10 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import styles from "./SearchContact.module.css";
 
-const SearchContact = ({ query, search }) => {
+const SearchContact = () => {
+	// Using Context
+	const {contactQuery: query, contactSearch: search } = useContext(ContactContext);
+
 	return (
 		<CssVarsProvider>
 			<div className={styles.searchBar}>
