@@ -149,7 +149,7 @@ const App = () => {
 					<Route path="/contacts" element={<Contacts />} />
 					<Route
 						path="/contacts/add"
-						element={<AddContact loading={loading} setContactInfo={onContactChange} createContactForm={createContactForm} contact={contact} groups={groups} />}
+						element={<AddContact />}
 					/>
 					<Route path="/contacts/:contactId" element={<ViewContact />} />
 					<Route path="/contacts/edit/:contactId" element={<EditContact />} />

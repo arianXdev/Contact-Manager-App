@@ -1,9 +1,14 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+
+// Import Context
+import { ContactContext } from "../../context/contactContext";
+
 import { useNavigate } from "react-router-dom";
 import { faUpload, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Spinner } from "..";
+
 
 // SweetAlert2
 import Swal from "sweetalert2";
@@ -11,7 +16,11 @@ import withReactContent from "sweetalert2-react-content";
 
 import styles from "./AddContact.module.css";
 
-const AddContact = ({ loading, contact, setContactInfo, groups, createContactForm }) => {
+const AddContact = () => {
+	// Using Context
+	const { loading, contact, createContact, onContactChange, groups } = useContext(ContactContext);
+
+
 	// Initilizing SweetAlert2 For React
 	const MySwal = withReactContent(Swal);
 
@@ -50,8 +59,8 @@ const AddContact = ({ loading, contact, setContactInfo, groups, createContactFor
 								ساخت مخاطب جدید
 							</h1>
 
-							<form className={styles.AddContactForm} onSubmit={createContactForm}>
-								<input type="text" className="input" name="fullName" placeholder="نام" required={true} value={contact.fullName} onChange={setContactInfo} />
+							<form className={styles.AddContactForm} onSubmit={createContact}>
+								<input type="text" className="input" name="fullName" placeholder="نام" required={true} value={contact.fullName} onChange={onContactChange} />
 								<input
 									type="text"
 									className="input"
@@ -59,12 +68,12 @@ const AddContact = ({ loading, contact, setContactInfo, groups, createContactFor
 									placeholder="شماره موبایل"
 									required={true}
 									value={contact.mobileNumber}
-									onChange={setContactInfo}
+									onChange={onContactChange}
 								/>
-								<input type="text" className="input" name="email" placeholder="ایمیل" required={true} value={contact.email} onChange={setContactInfo} />
-								<input type="text" className="input" name="job" placeholder="شغل" required={true} value={contact.job} onChange={setContactInfo} />
+								<input type="text" className="input" name="email" placeholder="ایمیل" required={true} value={contact.email} onChange={onContactChange} />
+								<input type="text" className="input" name="job" placeholder="شغل" required={true} value={contact.job} onChange={onContactChange} />
 
-								<select className="select" name="group" value={contact.group} onChange={setContactInfo}>
+								<select className="select" name="group" value={contact.group} onChange={onContactChange}>
 									<option value="0">انتخاب گروه</option>
 									{groups.length > 0 &&
 										groups.map((group) => (
