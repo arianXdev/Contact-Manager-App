@@ -127,21 +127,36 @@ const App = () => {
 	};
 
 	return (
-		<div className={styles.App}>
-			<Navbar query={contactQuery} search={contactSearch} />
-
-			<Routes>
-				<Route path="/" element={<Navigate to="/contacts" />} />
-				<Route path="/contacts" element={<Contacts contacts={filteredContacts} loading={loading} confirmDeleteContact={confirmDeleteContact} />} />
-				<Route
-					path="/contacts/add"
-					element={<AddContact loading={loading} setContactInfo={onContactChange} createContactForm={createContactForm} contact={contact} groups={groups} />}
-				/>
-				<Route path="/contacts/:contactId" element={<ViewContact />} />
-				<Route path="/contacts/edit/:contactId" element={<EditContact />} />
-				<Route path="*" element={<EmptyWarning />} />
-			</Routes>
-		</div>
+		<ContactContext.Provider value={{
+			loading,
+			setLoading,
+			contacts,
+			filteredContacts,
+			groups,
+			contact,
+			setContact,
+			contactQuery,
+			onContactChange,
+			deleteContact: confirmDeleteContact,
+			createContact: createContactForm,
+			contactSearch,
+		}}>
+			<div className={styles.App}>
+				<Navbar query={contactQuery} search={contactSearch} />
+	
+				<Routes>
+					<Route path="/" element={<Navigate to="/contacts" />} />
+					<Route path="/contacts" element={<Contacts contacts={filteredContacts} loading={loading} confirmDeleteContact={confirmDeleteContact} />} />
+					<Route
+						path="/contacts/add"
+						element={<AddContact loading={loading} setContactInfo={onContactChange} createContactForm={createContactForm} contact={contact} groups={groups} />}
+					/>
+					<Route path="/contacts/:contactId" element={<ViewContact />} />
+					<Route path="/contacts/edit/:contactId" element={<EditContact />} />
+					<Route path="*" element={<EmptyWarning />} />
+				</Routes>
+			</div>
+		</ContactContext.Provider>
 	);
 };
 
