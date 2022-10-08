@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faContactBook } from "@fortawesome/free-solid-svg-icons";
 
@@ -7,7 +8,7 @@ import { SearchContact } from "..";
 
 import styles from "./Navbar.module.css";
 
-const Navbar = ({ query, search }) => {
+const Navbar = () => {
 	const location = useLocation();
 
 	return (
@@ -24,7 +25,7 @@ const Navbar = ({ query, search }) => {
 						</Link>
 					</h1>
 
-					{location.pathname === "/contacts" ? <SearchContact query={query} search={search} /> : null}
+					{location.pathname === "/contacts" ? <SearchContact /> : null}
 				</div>
 			</div>
 		</nav>

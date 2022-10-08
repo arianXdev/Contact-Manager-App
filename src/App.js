@@ -142,7 +142,7 @@ const App = () => {
 			contactSearch,
 		}}>
 			<div className={styles.App}>
-				<Navbar query={contactQuery} search={contactSearch} />
+				<Navbar />
 	
 				<Routes>
 					<Route path="/" element={<Navigate to="/contacts" />} />
