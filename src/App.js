@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 
+// Import Context
+import { ContactContext } from "./context/contactContext"
+
 // Import from components/index.jsx
 import { Contacts, AddContact, EditContact, ViewContact, Navbar, EmptyWarning } from "./components";
 import { createContact, getAllContacts, getAllGroups, deleteContact } from "./services/contactService";
@@ -16,19 +19,11 @@ const App = () => {
 	const MySwal = withReactContent(Swal);
 
 	const [loading, setLoading] = useState(false);
-	const [forceRender, setForceRender] = useState(false);
-	const [getContacts, setContacts] = useState([]);
-	const [getFilteredContacts, setFilteredContacts] = useState([]);
-	const [getGroups, setGroups] = useState([]);
-	const [getContact, setContact] = useState({
-		fullName: "",
-		photo: "",
-		mobileNumber: "",
-		email: "",
-		job: "",
-		group: "",
-	});
-	const [query, setQuery] = useState({ text: "" });
+	const [contacts, setContacts] = useState([]); // a list of all contacts
+	const [filteredContacts, setFilteredContacts] = useState([]);
+	const [groups, setGroups] = useState([]);
+	const [contact, setContact] = useState({});
+	const [contactQuery, setContactQuery] = useState({ text: "" });
 	const navigate = useNavigate();
 
 	useEffect(() => {
