@@ -18,13 +18,15 @@ const App = () => {
 	// Initilizing SweetAlert2 For React
 	const MySwal = withReactContent(Swal);
 
+	const navigate = useNavigate();
+
 	const [loading, setLoading] = useState(false);
 	const [contacts, setContacts] = useState([]); // a list of all contacts
 	const [filteredContacts, setFilteredContacts] = useState([]);
 	const [groups, setGroups] = useState([]);
 	const [contact, setContact] = useState({});
 	const [contactQuery, setContactQuery] = useState({ text: "" });
-	const navigate = useNavigate();
+	
 
 	useEffect(() => {
 		// Get data from server using Axios
@@ -48,26 +50,6 @@ const App = () => {
 
 		fetchData();
 	}, []);
-
-	useEffect(() => {
-		// Get data from server using Axios
-		const fetchData = async () => {
-			try {
-				setLoading(true); // showing the user loading data from server
-
-				const { data: contactsData } = await getAllContacts();
-
-				setContacts(contactsData);
-
-				setLoading(false);
-			} catch (err) {
-				console.log(err.message);
-				setLoading(false);
-			}
-		};
-
-		fetchData();
-	}, [forceRender]); // when forceRender changed, run the code above
 
 	const createContactForm = async (event) => {
 		event.preventDefault(); // preventing to reload the page after clicking on the Submit button
