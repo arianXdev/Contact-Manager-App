@@ -32,7 +32,7 @@ const Contacts = () => {
 					{contacts.length > 0 ? (
 						<section className={styles.Contacts}>
 							{contacts.map((c) => (
-								<Contact key={c.id} contact={c} confirmDeleteContact={() => deleteContact(c.id, c.fullName)} />
+								<Contact key={c.id} contact={c} deleteContact={() => deleteContact(c.id, c.fullName)} />
 							))}
 						</section>
 					) : (
