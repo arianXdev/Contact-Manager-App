@@ -20,11 +20,12 @@ const AddContact = () => {
 	// Using Context
 	const { loading, contact, createContact, onContactChange, groups } = useContext(ContactContext);
 
-
+	
 	// Initilizing SweetAlert2 For React
 	const MySwal = withReactContent(Swal);
 
 	const [profileImage, setProfileImage] = useState("");
+
 	const navigate = useNavigate();
 
 	const handleSelectImage = async () => {
