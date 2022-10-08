@@ -1,15 +1,21 @@
 import { createContext } from "react";
 
+
 export const ContactContext = createContext({
+	// Default values
 	loading: false,
-	setLOading: () => {}, // only for auto-complete
-	contact: [],
-	setContact: () => {},
+	setLoading: () => {},
+	contacts: [],
 	filteredContacts: [],
-	contactQuery: {},
 	groups: [],
+	contact: {},
+	setContact: () => {},
+	contactQuery: {},
+	
+	// Functions and Event Handlers
 	onContactChange: () => {},
 	deleteContact: () => {},
 	updateContact: () => {},
 	createContact: () => {},
+	contactSearch: () => {}
 });
