@@ -55,10 +55,9 @@ const App = () => {
 		event.preventDefault(); // preventing to reload the page after clicking on the Submit button
 
 		try {
-			const { status } = await createContact(getContact);
+			const { status } = await createContact(contact);
 			if (status === 201) {
 				setContact({});
-				setForceRender(!forceRender);
 				navigate("/contacts");
 			}
 		} catch (err) {
@@ -66,8 +65,8 @@ const App = () => {
 		}
 	};
 
-	const setContactInfo = (event) => {
-		setContact({ ...getContact, [event.target.name]: event.target.value });
+	const onContactChange = (event) => {
+		setContact({ ...contact, [event.target.name]: event.target.value });
 	};
 
 	const confirmDeleteContact = (contactId, contactFullName) => {
@@ -121,25 +120,25 @@ const App = () => {
 	};
 
 	const contactSearch = (event) => {
-		setQuery({ ...query, text: event.target.value });
-		const allContacts = getContacts.filter((contact) => contact.fullName.toLowerCase().includes(event.target.value.toLowerCase()));
+		setContactQuery({ ...contactQuery, text: event.target.value });
+		const allContacts = contacts.filter((contact) => contact.fullName.toLowerCase().includes(event.target.value.toLowerCase()));
 
 		setFilteredContacts(allContacts);
 	};
 
 	return (
 		<div className={styles.App}>
-			<Navbar query={query} search={contactSearch} />
+			<Navbar query={contactQuery} search={contactSearch} />
 
 			<Routes>
 				<Route path="/" element={<Navigate to="/contacts" />} />
-				<Route path="/contacts" element={<Contacts contacts={getFilteredContacts} loading={loading} confirmDeleteContact={confirmDeleteContact} />} />
+				<Route path="/contacts" element={<Contacts contacts={filteredContacts} loading={loading} confirmDeleteContact={confirmDeleteContact} />} />
 				<Route
 					path="/contacts/add"
-					element={<AddContact loading={loading} setContactInfo={setContactInfo} createContactForm={createContactForm} contact={getContact} groups={getGroups} />}
+					element={<AddContact loading={loading} setContactInfo={onContactChange} createContactForm={createContactForm} contact={contact} groups={groups} />}
 				/>
 				<Route path="/contacts/:contactId" element={<ViewContact />} />
-				<Route path="/contacts/edit/:contactId" element={<EditContact forceRender={forceRender} setForceRender={setForceRender} />} />
+				<Route path="/contacts/edit/:contactId" element={<EditContact />} />
 				<Route path="*" element={<EmptyWarning />} />
 			</Routes>
 		</div>
