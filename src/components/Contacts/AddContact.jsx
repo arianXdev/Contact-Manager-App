@@ -43,8 +43,10 @@ const AddContact = () => {
 			},
 		});
 
-		setProfileImage(imageURL);
-		contact.photo = `${imageURL}`;
+		if (imageURL) {
+			setProfileImage(imageURL);
+			contact.photo = `${imageURL}`;
+		}
 	};
 
 	return (
