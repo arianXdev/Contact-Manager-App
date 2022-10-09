@@ -1,4 +1,7 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+
+// Import Context
+import { ContactContext } from "../../context/contactContext";
 
 import { Link, useParams } from "react-router-dom";
 
@@ -8,10 +11,12 @@ import { Spinner, EmptyWarning } from "..";
 import styles from "./ViewContact.module.css";
 
 const ViewContact = () => {
+	// Using COntext
+	const { loading, setLoading } = useContext(ContactContext);
+
 	// Getting the Contact ID from Browser URL
 	const { contactId } = useParams();
 	const [state, setState] = useState({
-		loading: false,
 		contact: {},
 		group: {},
 	});
@@ -19,26 +24,20 @@ const ViewContact = () => {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				setState({
-					...state,
-					loading: true,
-				});
+				setLoading(true);
 
 				const { data: contactData } = await getContact(contactId);
 				const { data: groupData } = await getGroup(contactData.group);
 
+				setLoading(false);
 				setState({
 					...state,
-					loading: false,
 					contact: contactData,
 					group: groupData,
 				});
 			} catch (err) {
 				console.log(err.message);
-				setState({
-					...state,
-					loading: false,
-				});
+				setLoading(false);
 			}
 		};
 
@@ -46,7 +45,7 @@ const ViewContact = () => {
 		// eslint-disable-next-line
 	}, []);
 
-	const { loading, contact, group } = state;
+	const { contact, group } = state;
 
 	return (
 		<main>
