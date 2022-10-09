@@ -11,7 +11,6 @@ import { faUpload, faUserPlus } from "@fortawesome/free-solid-svg-icons";
 
 import { Spinner } from "..";
 
-
 // SweetAlert2
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -20,9 +19,8 @@ import styles from "./AddContact.module.css";
 
 const AddContact = () => {
 	// Using Context
-	const { loading, contact, createContact, onContactChange, groups } = useContext(ContactContext);
+	const { loading, contact, createContact, changeContact, groups } = useContext(ContactContext);
 
-	
 	// Initilizing SweetAlert2 For React
 	const MySwal = withReactContent(Swal);
 
@@ -63,7 +61,7 @@ const AddContact = () => {
 							</h1>
 
 							<form className={styles.AddContactForm} onSubmit={createContact}>
-								<input type="text" className="input" name="fullName" placeholder="نام" required={true} value={contact.fullName} onChange={onContactChange} />
+								<input type="text" className="input" name="fullName" placeholder="نام" required={true} value={contact.fullName} onChange={changeContact} />
 								<input
 									type="text"
 									className="input"
@@ -71,12 +69,12 @@ const AddContact = () => {
 									placeholder="شماره موبایل"
 									required={true}
 									value={contact.mobileNumber}
-									onChange={onContactChange}
+									onChange={changeContact}
 								/>
-								<input type="text" className="input" name="email" placeholder="ایمیل" required={true} value={contact.email} onChange={onContactChange} />
-								<input type="text" className="input" name="job" placeholder="شغل" required={true} value={contact.job} onChange={onContactChange} />
+								<input type="text" className="input" name="email" placeholder="ایمیل" required={true} value={contact.email} onChange={changeContact} />
+								<input type="text" className="input" name="job" placeholder="شغل" required={true} value={contact.job} onChange={changeContact} />
 
-								<select className="select" name="group" value={contact.group} onChange={onContactChange}>
+								<select className="select" name="group" value={contact.group} onChange={changeContact}>
 									<option value="0">انتخاب گروه</option>
 									{groups.length > 0 &&
 										groups.map((group) => (

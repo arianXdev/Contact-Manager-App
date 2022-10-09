@@ -13,7 +13,7 @@ import styles from "./SearchContact.module.css";
 
 const SearchContact = () => {
 	// Using Context
-	const {contactQuery: query, contactSearch: search } = useContext(ContactContext);
+	const { contactQuery: query, searchContact: search } = useContext(ContactContext);
 
 	return (
 		<CssVarsProvider>

@@ -13,8 +13,8 @@ export const ContactContext = createContext({
 	contactQuery: {},
 
 	// Functions and Event Handlers
-	onContactChange: () => {},
+	changeContact: () => {},
 	deleteContact: () => {},
 	createContact: () => {},
-	contactSearch: () => {},
+	searchContact: () => {},
 });

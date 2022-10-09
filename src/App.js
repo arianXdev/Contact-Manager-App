@@ -147,11 +147,11 @@ const App = () => {
 		});
 	};
 
-	const onContactChange = (event) => {
+	const changeContact = (event) => {
 		setContact({ ...contact, [event.target.name]: event.target.value });
 	};
 
-	const contactSearch = (event) => {
+	const searchContact = (event) => {
 		setContactQuery({ ...contactQuery, text: event.target.value });
 		const allContacts = contacts.filter((contact) => contact.fullName.toLowerCase().includes(event.target.value.toLowerCase()));
 
@@ -170,10 +170,10 @@ const App = () => {
 				filteredContacts,
 				setFilteredContacts,
 				contactQuery,
-				onContactChange,
+				changeContact,
 				deleteContact: removeContact,
 				createContact: createContactForm,
-				contactSearch,
+				searchContact,
 			}}
 		>
 			<div className={styles.App}>
