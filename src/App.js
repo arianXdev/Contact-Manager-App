@@ -72,11 +72,7 @@ const App = () => {
 		}
 	};
 
-	const onContactChange = (event) => {
-		setContact({ ...contact, [event.target.name]: event.target.value });
-	};
-
-	const confirmDeleteContact = (contactId, contactFullName) => {
+	const removeContact = (contactId, contactFullName) => {
 		MySwal.fire({
 			title: "حذف مخاطب",
 			text: `آيا از حذف مخاطب ${contactFullName} مطمئن هستید؟`,
@@ -92,38 +88,67 @@ const App = () => {
 				confirmButton: "confirmButton-custom confirmButton-custom--red",
 				cancelButton: "confirmButton-custom confirmButton-custom--gray",
 			},
-		}).then((result) => {
+		}).then(async (result) => {
 			if (result.isConfirmed) {
-				MySwal.fire({
-					title: "حذف مخاطب انجام شد!",
-					text: `مخاطب ${contactFullName} با موفقیت حذف شد.`,
-					icon: "success",
-					confirmButtonColor: "#0066ff",
-					confirmButtonText: "اوکی",
-					customClass: {
-						popup: "popup-custom",
-						confirmButton: "confirmButton-custom confirmButton-custom--blue",
-					},
-				});
+				setLoading(true);
 
-				handleDeleteContact(contactId);
+				try {
+					const { status } = await deleteContact(contactId);
+
+					if (status === 200) {
+						const { data: contactsData } = await getAllContacts();
+						setContacts(contactsData);
+						setLoading(false);
+
+						MySwal.fire({
+							title: "حذف مخاطب انجام شد!",
+							text: `مخاطب ${contactFullName} با موفقیت حذف شد.`,
+							icon: "success",
+							confirmButtonColor: "#0066ff",
+							confirmButtonText: "اوکی",
+							customClass: {
+								popup: "popup-custom",
+								confirmButton: "confirmButton-custom confirmButton-custom--blue",
+							},
+						});
+					} else {
+						setLoading(false);
+
+						MySwal.fire({
+							title: "حذف مخاطب انجام نشد!",
+							text: `حذف مخاطب ${contactFullName} با مشکل مواجه شد!`,
+							icon: "error",
+							confirmButtonColor: "#0066ff",
+							confirmButtonText: "اوکی",
+							customClass: {
+								popup: "popup-custom",
+								confirmButton: "confirmButton-custom confirmButton-custom--blue",
+							},
+						});
+					}
+				} catch (err) {
+					setLoading(false);
+
+					console.log(err.message);
+
+					MySwal.fire({
+						title: "حذف مخاطب انجام نشد!",
+						text: `حذف مخاطب ${contactFullName} با مشکل مواجه شد!`,
+						icon: "error",
+						confirmButtonColor: "#0066ff",
+						confirmButtonText: "اوکی",
+						customClass: {
+							popup: "popup-custom",
+							confirmButton: "confirmButton-custom confirmButton-custom--blue",
+						},
+					});
+				}
 			}
 		});
 	};
 
-	const handleDeleteContact = async (contactId) => {
-		try {
-			setLoading(true);
-			const response = await deleteContact(contactId);
-			if (response) {
-				const { data: contactsData } = await getAllContacts();
-				setContacts(contactsData);
-				setLoading(false);
-			}
-		} catch (err) {
-			console.log(err.message);
-			setLoading(false);
-		}
+	const onContactChange = (event) => {
+		setContact({ ...contact, [event.target.name]: event.target.value });
 	};
 
 	const contactSearch = (event) => {
@@ -146,7 +171,7 @@ const App = () => {
 				setFilteredContacts,
 				contactQuery,
 				onContactChange,
-				deleteContact: confirmDeleteContact,
+				deleteContact: removeContact,
 				createContact: createContactForm,
 				contactSearch,
 			}}
