@@ -8,6 +8,8 @@ export const ContactContext = createContext({
 	setContacts: () => {},
 	groups: [],
 	contact: {},
+	filteredContacts: [],
+	setFilteredContacts: () => {},
 	contactQuery: {},
 
 	// Functions and Event Handlers
