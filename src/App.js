@@ -98,6 +98,7 @@ const App = () => {
 					if (status === 200) {
 						const { data: contactsData } = await getAllContacts();
 						setContacts(contactsData);
+						setFilteredContacts(contactsData);
 						setLoading(false);
 
 						MySwal.fire({
