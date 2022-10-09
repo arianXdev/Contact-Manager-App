@@ -4,9 +4,11 @@ import { useState, useContext } from "react";
 import { ContactContext } from "../../context/contactContext";
 
 import { useNavigate } from "react-router-dom";
-import { faUpload, faUserPlus } from "@fortawesome/free-solid-svg-icons";
-import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
+import { faUpload, faUserPlus } from "@fortawesome/free-solid-svg-icons";
+
 import { Spinner } from "..";
 
 

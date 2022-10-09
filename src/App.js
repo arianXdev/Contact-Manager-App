@@ -55,13 +55,21 @@ const App = () => {
 		event.preventDefault(); // preventing to reload the page after clicking on the Submit button
 
 		try {
-			const { status } = await createContact(contact);
+			setLoading(prevLoading => !prevLoading); // the better way to write setLoading(!loading)
+			const { status, data: newContact } = await createContact(contact);
+			
 			if (status === 201) {
+				const allContacts = [...contacts, newContact]; // get all contacts | clone contacts array
+				setContacts(allContacts);
+				setFilteredContacts(allContacts);
+
 				setContact({});
+				setLoading(prevLoading => !prevLoading); // the better way to write setLoading(!loading)
 				navigate("/contacts");
 			}
 		} catch (err) {
 			console.log(err.message);
+			setLoading(prevLoading => !prevLoading); // the better way to write setLoading(!loading)
 		}
 	};
 
