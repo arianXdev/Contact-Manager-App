@@ -1,6 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 
-import { getContact, getAllGroups, updateContact } from "../../services/contactService";
+// Import Context
+import { ContactContext } from "../../context/contactContext";
+
+import { getContact, updateContact } from "../../services/contactService";
 import { useNavigate, useParams } from "react-router-dom";
 import { Spinner } from "..";
 
@@ -13,46 +16,28 @@ import { faUserCircle } from "@fortawesome/free-regular-svg-icons";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
-const EditContact = ({ forceRender, setForceRender }) => {
+const EditContact = () => {
+	const { loading, setLoading, contacts, setContacts, setFilteredContacts, groups } = useContext(ContactContext);
+
 	// Initilizing SweetAlert2 For React
 	const MySwal = withReactContent(Swal);
 
 	const { contactId } = useParams();
 	const navigate = useNavigate();
 
-	const [state, setState] = useState({
-		loading: false,
-		contact: {
-			fullName: "",
-			photo: "",
-			mobileNumber: "",
-			email: "",
-			job: "",
-			group: "",
-		},
-		groups: [],
-	});
+	const [contact, setContact] = useState({});
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				setState({ ...state, loading: true });
+				setLoading(true);
 				const { data: contactData } = await getContact(contactId);
-				const { data: groupsData } = await getAllGroups();
 
-				setState({
-					...state,
-					loading: false,
-					contact: contactData,
-					groups: groupsData,
-				});
+				setContact(contactData);
+				setLoading(false);
 			} catch (err) {
 				console.log(err.message);
-
-				setState({
-					...state,
-					loading: false,
-				});
+				setLoading(false);
 			}
 		};
 
@@ -61,7 +46,7 @@ const EditContact = ({ forceRender, setForceRender }) => {
 	}, []);
 
 	const handleSelectImage = async () => {
-		const { value: imageURL = state.contact.photo } = await MySwal.fire({
+		const { value: imageURL = contact.photo } = await MySwal.fire({
 			input: "url",
 			title: "آدرس تصوير",
 			inputPlaceholder: "لطفا آدرس تصوير مورد نظر را وارد کنید...",
@@ -75,35 +60,41 @@ const EditContact = ({ forceRender, setForceRender }) => {
 			},
 		});
 
-		setState({ ...state, contact: { ...state.contact, photo: imageURL } });
+		setContact({ ...contact, photo: imageURL });
 	};
 
 	// Event Handler
-	const handleSubmitForm = async (event) => {
+	const onContactChange = (event) => {
+		setContact({ ...contact, [event.target.name]: event.target.value });
+	};
+
+	// Event Handler
+	const submitForm = async (event) => {
 		event.preventDefault(); // preventing to reload the page after clicking on the Submit button
 
 		try {
-			setState({ ...state, loading: true });
+			setLoading(true);
+			const { data: updatedContact, status } = await updateContact(contact, contactId);
 
-			const { data } = await updateContact(state.contact, contactId);
-			setState({ ...state, loading: false });
+			if (status === 200) {
+				setLoading(false);
 
-			if (data) {
-				setForceRender(!forceRender);
+				const allContacts = [...contacts];
+				const contactIndex = allContacts.findIndex((c) => c.id === updatedContact.id); // get the index of updated contact
+
+				// finding the contact in all contacts and set it to the updated datsa
+				allContacts[contactIndex] = { ...updatedContact };
+
+				setContacts(allContacts);
+				setFilteredContacts(allContacts);
+
 				navigate("/contacts");
 			}
 		} catch (err) {
 			console.log(err.message);
-			setState({ ...state, loading: false });
+			setLoading(false);
 		}
 	};
-
-	// Event Handler
-	const updateContactInfo = (event) => {
-		setState({ ...state, contact: { ...state.contact, [event.target.name]: event.target.value } });
-	};
-
-	const { groups, loading, contact } = state;
 
 	return (
 		<main>
@@ -118,8 +109,8 @@ const EditContact = ({ forceRender, setForceRender }) => {
 								ویرایش مخاطب
 							</h1>
 
-							<form className={styles.EditContactForm} onSubmit={handleSubmitForm}>
-								<input type="text" className="input" name="fullName" placeholder="نام" required={true} value={contact.fullName} onChange={updateContactInfo} />
+							<form className={styles.EditContactForm} onSubmit={submitForm}>
+								<input type="text" className="input" name="fullName" placeholder="نام" required={true} value={contact.fullName} onChange={onContactChange} />
 								<input
 									type="text"
 									className="input"
@@ -127,12 +118,12 @@ const EditContact = ({ forceRender, setForceRender }) => {
 									placeholder="شماره موبایل"
 									required={true}
 									value={contact.mobileNumber}
-									onChange={updateContactInfo}
+									onChange={onContactChange}
 								/>
-								<input type="text" className="input" name="email" placeholder="ایمیل" required={true} value={contact.email} onChange={updateContactInfo} />
-								<input type="text" className="input" name="job" placeholder="شغل" required={true} value={contact.job} onChange={updateContactInfo} />
+								<input type="text" className="input" name="email" placeholder="ایمیل" required={true} value={contact.email} onChange={onContactChange} />
+								<input type="text" className="input" name="job" placeholder="شغل" required={true} value={contact.job} onChange={onContactChange} />
 
-								<select className="select" name="group" value={contact.group} onChange={updateContactInfo}>
+								<select className="select" name="group" value={contact.group} onChange={onContactChange}>
 									<option value="0">انتخاب گروه</option>
 									{groups.length > 0 &&
 										groups.map((group) => (

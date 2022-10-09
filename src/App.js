@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 
 // Import Context
-import { ContactContext } from "./context/contactContext"
+import { ContactContext } from "./context/contactContext";
 
 // Import from components/index.jsx
 import { Contacts, AddContact, EditContact, ViewContact, Navbar, EmptyWarning } from "./components";
@@ -26,7 +26,6 @@ const App = () => {
 	const [groups, setGroups] = useState([]);
 	const [contact, setContact] = useState({});
 	const [contactQuery, setContactQuery] = useState({ text: "" });
-	
 
 	useEffect(() => {
 		// Get data from server using Axios
@@ -55,21 +54,21 @@ const App = () => {
 		event.preventDefault(); // preventing to reload the page after clicking on the Submit button
 
 		try {
-			setLoading(prevLoading => !prevLoading); // the better way to write setLoading(!loading)
+			setLoading((prevLoading) => !prevLoading); // the better way to write setLoading(!loading)
 			const { status, data: newContact } = await createContact(contact);
-			
+
 			if (status === 201) {
 				const allContacts = [...contacts, newContact]; // get all contacts | clone contacts array
 				setContacts(allContacts);
 				setFilteredContacts(allContacts);
 
 				setContact({});
-				setLoading(prevLoading => !prevLoading); // the better way to write setLoading(!loading)
+				setLoading((prevLoading) => !prevLoading); // the better way to write setLoading(!loading)
 				navigate("/contacts");
 			}
 		} catch (err) {
 			console.log(err.message);
-			setLoading(prevLoading => !prevLoading); // the better way to write setLoading(!loading)
+			setLoading((prevLoading) => !prevLoading); // the better way to write setLoading(!loading)
 		}
 	};
 
@@ -135,23 +134,26 @@ const App = () => {
 	};
 
 	return (
-		<ContactContext.Provider value={{
-			loading,
-			setLoading,
-			contacts,
-			filteredContacts,
-			groups,
-			contact,
-			setContact,
-			contactQuery,
-			onContactChange,
-			deleteContact: confirmDeleteContact,
-			createContact: createContactForm,
-			contactSearch,
-		}}>
+		<ContactContext.Provider
+			value={{
+				loading,
+				setLoading,
+				contacts,
+				setContacts,
+				groups,
+				contact,
+				filteredContacts,
+				setFilteredContacts,
+				contactQuery,
+				onContactChange,
+				deleteContact: confirmDeleteContact,
+				createContact: createContactForm,
+				contactSearch,
+			}}
+		>
 			<div className={styles.App}>
 				<Navbar />
-	
+
 				<Routes>
 					<Route path="/" element={<Navigate to="/contacts" />} />
 					<Route path="/contacts" element={<Contacts />} />
