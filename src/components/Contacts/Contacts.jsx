@@ -15,7 +15,7 @@ import styles from "./Contacts.module.css";
 
 const Contacts = () => {
 	// Using Context
-	const { loading, contacts, deleteContact } = useContext(ContactContext);
+	const { filteredContacts, loading, deleteContact } = useContext(ContactContext);
 
 	return (
 		<>
@@ -29,9 +29,9 @@ const Contacts = () => {
 				<Spinner />
 			) : (
 				<div className="container">
-					{contacts.length > 0 ? (
+					{filteredContacts.length > 0 ? (
 						<section className={styles.Contacts}>
-							{contacts.map((c) => (
+							{filteredContacts.map((c) => (
 								<Contact key={c.id} contact={c} deleteContact={() => deleteContact(c.id, c.fullName)} />
 							))}
 						</section>
