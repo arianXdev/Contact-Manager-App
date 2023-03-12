@@ -1,0 +1,37 @@
+{
+  "files": {
+    "main.css": "/Contact-Manager-App/static/css/main.167f124d.css",
+    "main.js": "/Contact-Manager-App/static/js/main.37e11c6e.js",
+    "static/media/No-Data.gif": "/Contact-Manager-App/static/media/No-Data.24f5472e8a85c54323d7.gif",
+    "static/media/Spinner.gif": "/Contact-Manager-App/static/media/Spinner.51cb169288e52a371617.gif",
+    "static/media/KalamehWeb-Thin.woff": "/Contact-Manager-App/static/media/KalamehWeb-Thin.df80ffe1a2a67afb43bc.woff",
+    "static/media/KalamehWeb-Regular.woff": "/Contact-Manager-App/static/media/KalamehWeb-Regular.9444682ff8b579f83025.woff",
+    "static/media/KalamehWeb-Bold.woff": "/Contact-Manager-App/static/media/KalamehWeb-Bold.5f71b6939b3cd06e8a85.woff",
+    "static/media/KalamehWeb-Black.woff": "/Contact-Manager-App/static/media/KalamehWeb-Black.1d267fc974de01e64559.woff",
+    "static/media/IRANYekanWebMedium.woff": "/Contact-Manager-App/static/media/IRANYekanWebMedium.7aef43b20f6370e141da.woff",
+    "static/media/IRANYekanWebThin.woff": "/Contact-Manager-App/static/media/IRANYekanWebThin.f6f4c5f90d05e065ffa6.woff",
+    "static/media/IRANYekanWebBold.woff": "/Contact-Manager-App/static/media/IRANYekanWebBold.c2639df5c04963849f97.woff",
+    "static/media/IRANYekanWebRegular.woff": "/Contact-Manager-App/static/media/IRANYekanWebRegular.d2f8150570e497f9a52a.woff",
+    "static/media/IRANYekanWebExtraBlack.woff": "/Contact-Manager-App/static/media/IRANYekanWebExtraBlack.d18a29f4a643a093a64a.woff",
+    "static/media/IRANYekanWebExtraBold.woff": "/Contact-Manager-App/static/media/IRANYekanWebExtraBold.4ec04942c5886dece5af.woff",
+    "static/media/IRANYekanWebBlack.woff": "/Contact-Manager-App/static/media/IRANYekanWebBlack.e834dcd695eaae746bd3.woff",
+    "static/media/IRANYekanWebThin.woff2": "/Contact-Manager-App/static/media/IRANYekanWebThin.f4d43a5db10c43250f22.woff2",
+    "static/media/IRANYekanWebMedium.woff2": "/Contact-Manager-App/static/media/IRANYekanWebMedium.564bbad62f67406de18e.woff2",
+    "static/media/IRANYekanWebBold.woff2": "/Contact-Manager-App/static/media/IRANYekanWebBold.e51d145cce366e087c08.woff2",
+    "static/media/IRANYekanWebRegular.woff2": "/Contact-Manager-App/static/media/IRANYekanWebRegular.a8e0d8c98fd16debdf8f.woff2",
+    "static/media/KalamehWeb-Thin.woff2": "/Contact-Manager-App/static/media/KalamehWeb-Thin.dbaa31bbb7451ebaf7bc.woff2",
+    "static/media/IRANYekanWebExtraBlack.woff2": "/Contact-Manager-App/static/media/IRANYekanWebExtraBlack.1c3c7e7a8872b062f1b1.woff2",
+    "static/media/KalamehWeb-Bold.woff2": "/Contact-Manager-App/static/media/KalamehWeb-Bold.ff60a46cbbe259ad5dc5.woff2",
+    "static/media/KalamehWeb-Regular.woff2": "/Contact-Manager-App/static/media/KalamehWeb-Regular.9024bac6664f1004325c.woff2",
+    "static/media/IRANYekanWebExtraBold.woff2": "/Contact-Manager-App/static/media/IRANYekanWebExtraBold.9bd63c30be66a923e189.woff2",
+    "static/media/IRANYekanWebBlack.woff2": "/Contact-Manager-App/static/media/IRANYekanWebBlack.f33805cdeb0c06f3c19f.woff2",
+    "static/media/KalamehWeb-Black.woff2": "/Contact-Manager-App/static/media/KalamehWeb-Black.144f17658f1ac28e22ee.woff2",
+    "index.html": "/Contact-Manager-App/index.html",
+    "main.167f124d.css.map": "/Contact-Manager-App/static/css/main.167f124d.css.map",
+    "main.37e11c6e.js.map": "/Contact-Manager-App/static/js/main.37e11c6e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.167f124d.css",
+    "static/js/main.37e11c6e.js"
+  ]
+}
