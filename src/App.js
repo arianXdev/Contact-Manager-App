@@ -179,7 +179,7 @@ const App = () => {
 		>
 			<div className={styles.App}>
 				{/* GitHub Badge */}
-				<a href="https://github.com/aryanhosseini" target="_blank" className="github-corner" aria-label="View source on GitHub">
+				<a href="https://github.com/ryanhosseini" target="_blank" className="github-corner" aria-label="View source on GitHub">
 					<svg
 						width={80}
 						height={80}
