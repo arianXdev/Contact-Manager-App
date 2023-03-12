@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Contact-Manager-App/static/css/main.167f124d.css",
-    "main.js": "/Contact-Manager-App/static/js/main.37e11c6e.js",
+    "main.js": "/Contact-Manager-App/static/js/main.96cac5ae.js",
     "static/media/No-Data.gif": "/Contact-Manager-App/static/media/No-Data.24f5472e8a85c54323d7.gif",
     "static/media/Spinner.gif": "/Contact-Manager-App/static/media/Spinner.51cb169288e52a371617.gif",
     "static/media/KalamehWeb-Thin.woff": "/Contact-Manager-App/static/media/KalamehWeb-Thin.df80ffe1a2a67afb43bc.woff",
@@ -28,10 +28,10 @@
     "static/media/KalamehWeb-Black.woff2": "/Contact-Manager-App/static/media/KalamehWeb-Black.144f17658f1ac28e22ee.woff2",
     "index.html": "/Contact-Manager-App/index.html",
     "main.167f124d.css.map": "/Contact-Manager-App/static/css/main.167f124d.css.map",
-    "main.37e11c6e.js.map": "/Contact-Manager-App/static/js/main.37e11c6e.js.map"
+    "main.96cac5ae.js.map": "/Contact-Manager-App/static/js/main.96cac5ae.js.map"
   },
   "entrypoints": [
     "static/css/main.167f124d.css",
-    "static/js/main.37e11c6e.js"
+    "static/js/main.96cac5ae.js"
   ]
 }
