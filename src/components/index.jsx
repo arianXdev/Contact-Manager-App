@@ -1,5 +1,3 @@
-// The better way of importing components
-
 // Contact Components
 export { default as Contacts } from "./Contacts/Contacts";
 export { default as Contact } from "./Contacts/Contact";
