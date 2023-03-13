@@ -9,11 +9,10 @@ import { getAllGroups, getContact } from "../../services/contactService";
 import { Spinner, EmptyWarning } from "..";
 
 import styles from "./ViewContact.module.css";
-import axios from "axios";
 
 const ViewContact = () => {
 	// Using COntext
-	const { loading, setLoading, groups } = useContext(ContactContext);
+	const { loading, setLoading } = useContext(ContactContext);
 
 	// Getting the Contact ID from Browser URL
 	const { contactId } = useParams();
