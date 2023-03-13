@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const SERVER_URL = "http://localhost:9000";
+const SERVER_URL = "https://notesapi.arianh.ir";
 
 // @desc Get All Contacts
 // @route GET http://localhost:9000/contacts
