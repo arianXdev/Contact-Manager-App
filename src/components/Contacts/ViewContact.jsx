@@ -5,14 +5,15 @@ import { ContactContext } from "../../context/contactContext";
 
 import { Link, useParams } from "react-router-dom";
 
-import { getContact, getGroup } from "../../services/contactService";
+import { getAllGroups, getContact } from "../../services/contactService";
 import { Spinner, EmptyWarning } from "..";
 
 import styles from "./ViewContact.module.css";
+import axios from "axios";
 
 const ViewContact = () => {
 	// Using COntext
-	const { loading, setLoading } = useContext(ContactContext);
+	const { loading, setLoading, groups } = useContext(ContactContext);
 
 	// Getting the Contact ID from Browser URL
 	const { contactId } = useParams();
@@ -27,13 +28,15 @@ const ViewContact = () => {
 				setLoading(true);
 
 				const { data: contactData } = await getContact(contactId);
-				const { data: groupData } = await getGroup(contactData.group);
+				const { data: groupsData } = await getAllGroups();
+
+				const group = groupsData.find((g) => g.id === parseInt(contactData.group));
 
 				setLoading(false);
 				setState({
 					...state,
 					contact: contactData,
-					group: groupData,
+					group,
 				});
 			} catch (err) {
 				console.log(err.message);

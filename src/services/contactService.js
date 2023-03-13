@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const SERVER_URL = "https://notesapi.arianh.ir";
+const SERVER_URL = "https://notesapi.arianh.ir/index.php";
 
 // @desc Get All Contacts
 // @route GET http://localhost:9000/contacts
@@ -20,13 +20,6 @@ export const getContact = (contactId) => {
 // @route GET http://localhost:9000/groups
 export const getAllGroups = () => {
 	const url = `${SERVER_URL}/groups`;
-	return axios.get(url);
-};
-
-// @desc Get Group with group ID
-// @route GET http://localhost:9000/groups/:groupId
-export const getGroup = (groupId) => {
-	const url = `${SERVER_URL}/groups/${groupId}`;
 	return axios.get(url);
 };
 
