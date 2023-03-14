@@ -25,3 +25,4 @@ yarn-error.log*
 # fonts
 /src/assets/fonts/IranYekan/woff*
 /src/assets/fonts/Kalameh/woff*
+.vercel
